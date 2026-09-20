@@ -1,15 +1,16 @@
 import http from "http";
 import app from "./app";
 import { connectDatabase } from "./config/db.config";
+import ENV_CONFIG from "./config/env.config";
 
-const PORT = 9000;
-const DB_URL = "mongodb://localhost:27017/team_17_db";
+const PORT = ENV_CONFIG.PORT;
+const DB_URI = ENV_CONFIG.DB_URI;
 
 //* http server
 const server = http.createServer(app);
 
 //* database connect
-connectDatabase(DB_URL);
+connectDatabase(DB_URI);
 
 //* server listen
 server.listen(PORT, () => {
